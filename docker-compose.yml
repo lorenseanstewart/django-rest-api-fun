@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+    ports: # "host-port:image-port"
+      - "8000:8000"
+    volumes: # allows for hot reloading
+      - ./app:/app
+      # the > below means the command will be on the next line
+    command: >
+      # shell command "command goes in these quotes"
+      sh -c "python manage.py runserver 0.0.0.0:8000"
